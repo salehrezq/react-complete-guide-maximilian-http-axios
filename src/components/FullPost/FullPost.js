@@ -18,7 +18,7 @@ class FullPost extends Component {
          // To prevent that infinite call loop of componentDidUpdate()
          // We must check to prevent `this.setState()` unless an updated `props` value received.
          if (this.props.postId !== prevProps.postId) {
-            axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.postId).then((response) => {
+            axios.get('/posts/' + this.props.postId).then((response) => {
                this.setState({post: response.data});
             });
          }
@@ -26,7 +26,7 @@ class FullPost extends Component {
    }
 
    deletePostHandler = () => {
-      axios.get('https://jsonplaceholder.typicode.com/posts/' + this.state.post.id).then((response) => {
+      axios.get('/posts/' + this.state.post.id).then((response) => {
          console.log(response);
       });
    }
